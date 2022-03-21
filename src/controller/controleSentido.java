@@ -6,24 +6,24 @@ public class controleSentido extends Thread {
 
 	private int idCarro;
 	private Semaphore semaforo;
-	private Semaphore semaforo4;
+	private Semaphore semaforo2;
 	private static int sentido;
 
-	public controleSentido(int idCarro, Semaphore semaforo, Semaphore semaforo4) {
+	public controleSentido(int idCarro, Semaphore semaforo, Semaphore semaforo2) {
 		this.idCarro = idCarro;
 		this.semaforo = semaforo;
-		this.semaforo4= semaforo4;
+		this.semaforo2= semaforo2;
 	}
 
 	@Override
 	public void run() {
 		try {
-			semaforo4.acquire();
+			semaforo2.acquire();
 			chegando();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} finally {
-			semaforo4.release();
+			semaforo2.release();
 		}
 		try {
 			semaforo.acquire();
